@@ -2,6 +2,7 @@
 
 <head>
     <link rel="stylesheet" href="../Design/Style.css">
+    <script src="../JS/Validation.js"></script>
     <title>Product Management Page</title>
 </head>
 
@@ -14,10 +15,12 @@
         <br>
         <label for="quantity">Quantity per Day</label>
         <br>
-        <input type="number" id="quantity" placeholder="Enter quantity per day">
+        <input type="number" id="quantity" placeholder="Enter quantity per day" onchange="collect_data()">
         <br>
         <label>Total Price for 30 day: </label>
         <br>
         <input type="text" id="totalPrice" placeholder="0" readonly>
     </fieldset>
+
+
 </body>
