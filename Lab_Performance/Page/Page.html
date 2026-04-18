@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="../Design/Style.css">
+    <script src="../JS/Validation.js"></script>
+    <title>Product Management Page</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Product Management Page</legend>
+        <label for="unitPrice"> unit Price</label>
+        <br>
+        <input type="number" id="unitPrice" value="1000" disabled>
+        <br>
+        <label for="quantity">Quantity per Day</label>
+        <br>
+        <input type="number" id="quantity" placeholder="Enter quantity per day" onchange="collect_data()">
+        <br>
+        <label>Total Price for 30 day: </label>
+        <br>
+        <input type="text" id="totalPrice" placeholder="0" readonly>
+    </fieldset>
+</body>
