@@ -5,8 +5,9 @@ $name = "";
 $number = "";
 $email = "";
 $website = "";
-$commnet = "";
+$comment = "";
 $gender = "";
+
 $datafile = "../data.json";
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
@@ -15,15 +16,25 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $number = $_POST["number"];
     $email = $_POST["email"];
     $website = $_POST["website"];
-    $comment = $_POST["comment"];
-       
-    if(!empty($name) && strlen($name) >= 5)
+    $comment = $_POST["message"];
+    $gender = $_POST["gender"];
+
+    if(!empty($name) && strlen($name) >= 5 && !empty($number) && !empty($email) && !empty($gender)
+    )
     {
         $_SESSION["name"] = $name;
         setcookie('name', $name, time()+3600, "/");
-        echo "log in Successfull!";
 
-        $formdata = array("name" => $name);
+        echo "Login Successful!<br>";
+
+        $formdata = array(
+            "name" => $name,
+            "number" => $number,
+            "email" => $email,
+            "website" => $website,
+            "comment" => $comment,
+            "gender" => $gender
+        );
 
         if(file_exists($datafile)){
             $existdata = file_get_contents($datafile);
@@ -43,25 +54,25 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
         if(file_put_contents($datafile, $jsondata))
         {
-            echo " Data Saved";
+            echo "Data Saved<br>";
         }
         else{
-            echo " Please Try Again";
+            echo "Please Try Again<br>";
         }
 
         $data = file_get_contents($datafile);
         $mydata = json_decode($data, true);
     }
     else{
-        echo "Please ensure the session cookies";
+        echo "Please fill all required fields properly";
     }
-        
+
     if(isset($_SESSION['name']) || isset($_COOKIE['name']))
     {
-        echo " Welcome Back";
+        echo "Welcome Back";
     }
     else{
-        echo " log in Again";
-    }    
+        echo "Login Again";
+    }
 }
 ?>

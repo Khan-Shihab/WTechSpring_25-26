@@ -1,5 +1,13 @@
 [
     {
         "name": "Shihab"
+    },
+    {
+        "name": "Shihab",
+        "number": "01920323",
+        "email": "shihabkhan0430@gmail.com",
+        "website": "http:\/\/localhost\/WTechSpring_25-26\/Final_Term\/Lab_Practice\/View\/Registration.php",
+        "comment": "hello",
+        "gender": "male"
     }
 ]
