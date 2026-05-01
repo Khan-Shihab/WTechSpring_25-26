@@ -7,18 +7,13 @@ $password="";
 $datafile ="../data.json";
 
 
-
-
 if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         $name = $_POST["name"];
         $password= $_POST["password"];
-        $file= $_FILES["file"];
-       
-        
 
         if(!empty($name) && strlen($name)>=5 && strlen($password)>=4)
-            {                
+            {
                 echo "Log In Successfull";
                 setcookie("UserName",$name,time()+3600, "/");
 
@@ -46,32 +41,24 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     else{
                         echo "No Data Saved";
                     }
-            $data = file_get_contents($datafile);
-            $mydata = json_decode($data,true);
-            
-            if($file)
-            {                
-                $targetdirectory = "../File/";
-                $path= $targetdirectory.basename($file["name"]);
-                $result = move_uploaded_file($file["tmp_name"],$path);
-            }
-            else{
-                $path = "";
-            }
-           
-            
-
             $database = new db();
             $connection = $database->connection();
-            $result = $database->signup($connection,"information", $name, $password, $path);
+            $result = $database->signin($connection,"users", $name, $password);
+            
             if($result)
                 {
-                    Header("Location:../View/Login.php ");
+                    $_SESSION["loggedIn"] = true;
+                    $_SESSION["UserName"] = $name;
+                    $row = $result->fetch_assoc();
+                    if($row && isset($row["filepath"])){
+                        $_SESSION["filepath"] = $row["filepath"];
+                    }
+                    Header("Location:../View/Dashboard.php ");
                 }
-            }
             else{
                 echo "Please Use the appropiate validation";
             }
+        }
 
     if(!isset($_SESSION["UserName"]) || isset($_COOKIE["UserName"]))
         {
@@ -81,6 +68,4 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             echo "Please log In";
         }
     }
-
-
 ?>
