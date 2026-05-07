@@ -1,7 +1,9 @@
 <?php
 include "../Model/db.php";
 session_start();
-if($_SERVER["REQUEST_METHOD"]=="POST"){
+if($_SERVER["REQUEST_METHOD"]=="POST"){  
+    $count = isset($_COOKIE['fb_count']) ? $_COOKIE['fb_count'] : 0;
+
     $subject = $_POST["subject"];
     $message = $_POST["message"];
     $name = $_SESSION["name"];

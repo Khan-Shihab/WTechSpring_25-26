@@ -1,4 +1,5 @@
-<?php include "../Controller/DashboardController.php";
+<?php 
+include "../Controller/DashboardController.php";
 
 ?>
 <!DOCTYPE html>
@@ -37,14 +38,15 @@
 
             <hr style="margin: 30px 0;">
 
-            <section id="summary">
-                <h2>Feedback Summary</h2>
-                <ul>
-                    <li>Total Submissions: 45</li>
-                    <li>Pending Reviews: 12</li>
-                    <li>Resolved Issues: 33</li>
-                </ul>
-            </section>
+        <section id="summary">
+        <h2>Feedback Summary</h2>
+        <ul>
+            <!-- Replace '45' with your dynamic count variable -->
+            <li>Total Submissions: <?php echo $count; ?></li>
+            <li>Pending Reviews: 12</li>
+            <li>Resolved Issues: 33</li>
+        </ul>
+        </section>
 
             <hr style="margin: 30px 0;">
 

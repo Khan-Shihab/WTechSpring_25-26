@@ -46,5 +46,12 @@ class db{
         }
         return $result;
     }
+    function countRow(){
+    $connection = $this->connection(); // Add this line!
+    $sql = "SELECT * FROM feedback";
+    $result = $connection->query($sql);
+    $count = $result->num_rows;
+    return $count;
+}
 }
 ?>
