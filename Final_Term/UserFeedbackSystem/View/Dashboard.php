@@ -22,7 +22,7 @@ include "../Controller/DashboardController.php";
             <ul style="list-style: none; padding: 0;">
                 <li style="margin-bottom: 15px;"><a href="Dashboard.php">Dashboard</a></li>
                 <li style="margin-bottom: 15px;"><a href="add_feedback.php">Add Feedback</a></li>
-                <li style="margin-bottom: 15px;"><a href="#view">View Feedback</a></li>
+                <li style="margin-bottom: 15px;"><a href="viewFeetback.php">View Feedback</a></li>
                 <li style="margin-bottom: 15px;"><a href="#profile">Profile</a></li>
                 <li style="margin-top: 50px;"><a href="Login.php" style="color: red;">Logout</a></li>
             </ul>
