@@ -13,10 +13,22 @@ class db{
        return $connection;
     }
 
-    function signup($connection,$tableName,$userNmae,$password,$email){
-        $sql = "INSERT INTO ".$tableName."(Name,Password,Email) VALUES ('".$username."','".$password."','".$email."')";
+    function signup($connection,$tableName,$username,$password,$email){
+        $sql = "INSERT INTO ".$tableName." (Name, Password, Email) VALUES ('".$username."', '".$password."', '".$email."')";       
         $result = $connection->query($sql);
+        if (!$result) {
+        die("SQL Error: " . $connection->error);
+        }
         return $result;
+    }
+    function signin($connection,$tableName,$username,$password){
+        $sql = "SELECT * FROM ".$tableName. " WHERE Name='".$username."' AND Password='".$password."'";
+        $result = $connection->query($sql);
+        
+        if($result->num_rows > 0){
+            return true;
+        }
+        return false;
     }
 }
 ?>

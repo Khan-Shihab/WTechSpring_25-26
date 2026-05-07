@@ -7,7 +7,6 @@
 </head>
 <body>
     <h2>Create an Account</h2>
-    <!-- Added .php extension to the action -->
     <form action="../Controller/RegistrationController.php" method="POST">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" required minlength="3"><br><br>

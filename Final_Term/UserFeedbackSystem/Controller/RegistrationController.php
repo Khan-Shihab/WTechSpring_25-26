@@ -2,8 +2,8 @@
 include "../Model/db.php";
 session_start();
 if($_SERVER['REQUEST_METHOD']=="POST"){
-    $name = $_POST["name"];
-    $email = $_POST["email"];
+    $name = trim($_POST["name"]);
+    $email = trim($_POST["email"]);
     $pass = $_POST["password"];
     $confirm = $_POST["confirm_password"];
 
@@ -20,10 +20,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         $database = new db();
         $connection = $database ->connection();
         $result = $database->signup($connection,"user_table",$name,$pass,$email);
-        if($result)
-            {
+        if($result){
            Header("Location: ../View/Login.php");     
-            }
+           exit();
+        }
         else{
             echo "Something is Wrong";
         }
