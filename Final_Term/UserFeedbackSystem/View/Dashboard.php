@@ -1,63 +1,110 @@
 <?php 
 include "../Controller/DashboardController.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Feedback System</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback System</title>
+  <link rel="stylesheet" href="dashboard.css">
 </head>
-<body style="margin: 0; display: flex; flex-direction: column; height: 100vh; font-family: sans-serif;">
+<body>
 
-    <!-- Header -->
-    <header style="background: #333; color: white; padding: 20px; text-align: center;">
-        <h1>System Header</h1>
-    </header>
+  <!-- ===== Header ===== -->
+  <header>
+    <h1>Feed<span>back</span> System</h1>
+    <div class="header-dot"></div>
+  </header>
 
-    <div style="display: flex; flex: 1;">
-        
-        <!-- Sidebar / Navigation Menu -->
-        <nav style="width: 250px; background: #f4f4f4; border-right: 1px solid #ddd; padding: 20px;">
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 15px;"><a href="Dashboard.php">Dashboard</a></li>
-                <li style="margin-bottom: 15px;"><a href="add_feedback.php">Add Feedback</a></li>
-                <li style="margin-bottom: 15px;"><a href="viewFeetback.php">View Feedback</a></li>
-                <li style="margin-bottom: 15px;"><a href="#profile">Profile</a></li>
-                <li style="margin-top: 50px;"><a href="Login.php" style="color: red;">Logout</a></li>
-            </ul>
-        </nav>
+  <div class="layout">
 
-        <!-- Main Content Area -->
-        <main style="flex: 1; padding: 40px; background: #fff;">
-            
-            <section id="welcome">
-                <h2>Welcome Message</h2>
-                <p>Hello, User! Welcome back to your feedback management portal.</p>
-            </section>
+    <!-- ===== Sidebar ===== -->
+    <nav>
+      <p class="nav-label">Navigation</p>
+      <ul>
+        <li class="active">
+          <a href="Dashboard.php">
+            <span class="nav-icon">⬡</span> Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="add_feedback.php">
+            <span class="nav-icon">✦</span> Add Feedback
+          </a>
+        </li>
+        <li>
+          <a href="viewFeetback.php">
+            <span class="nav-icon">◈</span> View Feedback
+          </a>
+        </li>
+        <li>
+          <a href="#profile">
+            <span class="nav-icon">◎</span> Profile
+          </a>
+        </li>
+        <li class="logout">
+          <a href="Login.php">
+            <span class="nav-icon">⇥</span> Logout
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-            <hr style="margin: 30px 0;">
+    <!-- ===== Main Content ===== -->
+    <main>
 
-        <section id="summary">
-        <h2>Feedback Summary</h2>
-        <ul>
-            <!-- Replace '45' with your dynamic count variable -->
-            <li>Total Submissions: <?php echo $count; ?></li>
-            <li>Pending Reviews: <?php echo $pending; ?></li>
-            <li>Resolved Issues: <?php echo $resolve; ?></li>
-        </ul>
-        </section>
+      <!-- Welcome -->
+      <section id="welcome">
+        <h2>Welcome back, <span class="highlight">User!</span></h2>
+        <p>Here's what's happening in your feedback management portal today.</p>
+      </section>
 
-            <hr style="margin: 30px 0;">
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Submissions</div>
+          <div class="stat-value"><?php echo $count; ?></div>
+          <span class="stat-icon">📊</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pending Reviews</div>
+          <div class="stat-value"><?php echo $pending; ?></div>
+          <span class="stat-icon">⏳</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Resolved Issues</div>
+          <div class="stat-value"><?php echo $resolve; ?></div>
+          <span class="stat-icon">✅</span>
+        </div>
+      </div>
 
-            <section id="activity">
-                <h2>Recent Activity</h2>
-                <p>Last login: 2 hours ago</p>
-                <p>New feedback received from "Customer A" at 10:15 AM</p>
-            </section>
+      <hr class="divider">
 
-        </main>
-    </div>
+      <!-- Recent Activity -->
+      <section id="activity">
+        <h2>Recent Activity</h2>
+
+        <div class="activity-item">
+          <div class="activity-dot"></div>
+          <div>
+            <div class="activity-text">New feedback received from <strong>"Customer A"</strong></div>
+            <div class="activity-time">Today at 10:15 AM</div>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-dot" style="background:#00d4ff; box-shadow:0 0 8px #00d4ff;"></div>
+          <div>
+            <div class="activity-text">You last logged in <strong>2 hours ago</strong></div>
+            <div class="activity-time">Today at 08:00 AM</div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
 
 </body>
 </html>
