@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     else{
         $database = new db();
         $connection = $database -> connection();
-        $result = $database -> addfeedback($connection,"feedback",$subject,$message,$name);
+        $result = $database -> addfeedback($connection,"feedback",$subject,$message,$name,"Pending");
         if($result){
             header("Location: ../View/Dashboard.php");
             exit();

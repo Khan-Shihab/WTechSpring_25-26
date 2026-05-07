@@ -43,8 +43,8 @@ include "../Controller/DashboardController.php";
         <ul>
             <!-- Replace '45' with your dynamic count variable -->
             <li>Total Submissions: <?php echo $count; ?></li>
-            <li>Pending Reviews: 12</li>
-            <li>Resolved Issues: 33</li>
+            <li>Pending Reviews: <?php echo $pending; ?></li>
+            <li>Resolved Issues: <?php echo $resolve; ?></li>
         </ul>
         </section>
 
