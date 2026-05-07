@@ -30,5 +30,21 @@ class db{
         }
         return false;
     }
+
+    function addfeedback($connection,$tablename,$subject,$message,$name)
+    {
+        $mailQuery = "SELECT Email FROM user_table WHERE Name='$name'";
+        $result = $connection->query($mailQuery);
+
+        $row = $result->fetch_assoc();
+        $email = $row['Email'];
+        
+        $sql = "INSERT INTO ".$tablename." (user_email,subject,message) VALUES ('".$email."','".$subject."','".$message."')";
+        $result = $connection->query($sql);
+         if (!$result) {
+        die("SQL Error: " . $connection->error);
+        }
+        return $result;
+    }
 }
 ?>

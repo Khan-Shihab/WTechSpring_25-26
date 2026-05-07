@@ -13,6 +13,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         $connection = $database -> connection();
         $result = $database->signin($connection,"user_table",$username,$password);
         if($result){
+            $_SESSION["name"] = $username;
+            setcookie("name",$username,time()+86400,'/');
             header("Location: ../View/Dashboard.php");
         }
         else{
