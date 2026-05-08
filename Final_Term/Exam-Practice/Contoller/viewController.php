@@ -1,5 +1,7 @@
 <?php
+include "../Model/db.php";
 session_start();
+$data ="../data.json";
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $name = $_POST["name"];
     $id = $_POST["id"];
@@ -35,6 +37,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         }
         echo "total mark is".$total;
         echo "grade ".$grade;
+
+        $database = new db();
+        $connection = $database->connection();
+        $result = $database -> result($connection,"student_result",$name,$id,$a_mark,$e_mark,$total,$grade);
+        if($result){
+            echo "Successfullly Inserted";
+        }
+        else{
+            echo "Something is wrong";
+        }
+        
+        $formdata = array("student_id":$id,"name":$name,"total_mark":$total,"grade":$grade);
     }
 }
 ?>

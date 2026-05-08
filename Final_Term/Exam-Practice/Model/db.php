@@ -4,7 +4,7 @@ class db{
         $db_host = "localhost";
         $db_user = "root";
         $db_pass = "";
-        $db_database = "Lab_Work"
+        $db_database = "Lab_Work";
 
         $connection = new mysqli($db_host,$db_user,$db_pass,$db_database);
 
@@ -21,4 +21,5 @@ class db{
         $result = $connection->query($sql);
         return $result;
     }
+}
 ?>
