@@ -1,7 +1,7 @@
 <?php
 include "../Model/db.php";
 session_start();
-$data ="../data.json";
+$datafile ="../data.json";
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $name = $_POST["name"];
     $id = $_POST["id"];
@@ -48,7 +48,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             echo "Something is wrong";
         }
         
-        $formdata = array("student_id":$id,"name":$name,"total_mark":$total,"grade":$grade);
+        $formdata = array("student_id: "=>$id,"name: "=>$name,"total_mark: "=>$total,"grade: "=>$grade);
+        if(file_exists($datafile)){
+            $exist_data = file_get_contents($datafile);
+            $tempdata = json_decode($exist_data,true);
+        }
+        else{
+            $tempdata = array();
+        }
+        $tempdata = $formdata;
+        $json_data = json_encode($tempdata,JSON_PRETTY_PRINT);
+        if(file_put_contents($datafile,$json_data)){
+            echo "datasave";
+        }
+        else{
+            echo "somethings wrong";
+        }
     }
 }
 ?>
